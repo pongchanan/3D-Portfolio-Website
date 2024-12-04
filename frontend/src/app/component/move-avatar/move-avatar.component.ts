@@ -4,9 +4,9 @@ import {
   AfterViewInit,
   ElementRef,
   ViewChild,
+  HostListener,
 } from '@angular/core';
 import * as THREE from 'three';
-import { After } from 'v8';
 
 @Component({
   selector: 'app-move-avatar',
@@ -20,7 +20,10 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit {
   private renderer!: THREE.WebGLRenderer;
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
-  private cube!: THREE.Mesh;
+  private triangle!: THREE.Mesh;
+
+  private mouseX: number = 0;
+  private mouseY: number = 0;
 
   ngOnInit(): void {}
 
@@ -45,18 +48,31 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit {
     );
     this.camera.position.z = 5;
 
-    const geometry = new THREE.BoxGeometry();
+    const geometry = new THREE.BufferGeometry();
+    const vertices = new Float32Array([
+      0.0, 1.0, 0.0, -1.0, -1.0, 0.0, 1.0, -1.0, 0.0,
+    ]);
+    geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
     const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    this.cube = new THREE.Mesh(geometry, material);
-    this.scene.add(this.cube);
+    this.triangle = new THREE.Mesh(geometry, material);
+    this.scene.add(this.triangle);
   }
 
   private animate(): void {
     requestAnimationFrame(this.animate.bind(this));
 
-    this.cube.rotation.x += 0.01;
-    this.cube.rotation.y += 0.01;
+    // this.triangle.rotation.x += 0.01;
+    // this.triangle.rotation.y += 0.01;
+
+    this.triangle.position.x = (this.mouseX / window.innerWidth) * 2 - 1;
+    this.triangle.position.y = -(this.mouseY / window.innerHeight) * 2 + 1;
 
     this.renderer.render(this.scene, this.camera);
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMouseMove(event: MouseEvent): void {
+    this.mouseX = event.clientX;
+    this.mouseY = event.clientY;
   }
 }
