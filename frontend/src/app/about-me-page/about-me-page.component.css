@@ -4,4 +4,44 @@
   align-items: center;
   flex-direction: column;
   margin-top: 20px;
+  text-align: center;
+}
+
+#container h1,
+#container h2 {
+  margin: 10px 0;
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 400px; /* Increased from 150px to 200px */
+  height: 400px; /* Increased from 150px to 200px */
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+#description {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1100px;
+  margin: 20px auto;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  text-align: left; /* Align text to the left for better readability */
+  font-size: 1.2em; /* Increase font size */
+}
+
+#description p {
+  margin-bottom: 15px; /* Add space between paragraphs */
+}
+
+#greeting_message {
+  font-size: 4em; /* Increase font size */
+  font-weight: bold; /* Make text bold */
+}
+
+#introduce_message,
+.interest_message {
+  font-size: 2em; /* Increase font size */
 }
