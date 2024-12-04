@@ -5,12 +5,12 @@ import {
   ElementRef,
   ViewChild,
   HostListener,
+  ChangeDetectorRef,
 } from '@angular/core';
 import * as THREE from 'three';
 
 @Component({
   selector: 'app-move-avatar',
-  imports: [],
   templateUrl: './move-avatar.component.html',
   styleUrl: './move-avatar.component.css',
 })
@@ -24,6 +24,8 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit {
 
   private mouseX: number = 0;
   private mouseY: number = 0;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
@@ -76,5 +78,6 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit {
   onMouseMove(event: MouseEvent): void {
     this.mouseX = event.clientX;
     this.mouseY = event.clientY;
+    this.changeDetectorRef.detectChanges(); // Manually trigger change detection
   }
 }

@@ -1,16 +1,24 @@
 <div>
-  <img [src]="getImageURL(projectDetail().image_bytes)" alt="big" />
+  <div class="image-container">
+    <img
+      [src]="getImageURL(projectDetail().image_bytes)"
+      alt="big"
+      class="fixed-size-image"
+    />
+  </div>
+  <app-move-avatar></app-move-avatar>
   <p id="topic">{{ projectDetail().title }}</p>
-  <p>
+  <p class="description-text">
     {{ projectDetail().description }}
   </p>
-  <app-move-avatar></app-move-avatar>
-  <app-toggle-link-button
-    [buttonText]="'VIEW ON GITHUB'"
-    [linkPath]="projectDetail().github_url || ''"
-  ></app-toggle-link-button>
-  <app-toggle-link-button
-    [buttonText]="'VIEW ON WEBSITE'"
-    [linkPath]="projectDetail().website_url || ''"
-  ></app-toggle-link-button>
+  <div class="link-buttons">
+    <app-toggle-link-button
+      [buttonText]="'VIEW ON GITHUB'"
+      [linkPath]="projectDetail().github_url || ''"
+    ></app-toggle-link-button>
+    <app-toggle-link-button
+      [buttonText]="'VIEW ON WEBSITE'"
+      [linkPath]="projectDetail().website_url || ''"
+    ></app-toggle-link-button>
+  </div>
 </div>

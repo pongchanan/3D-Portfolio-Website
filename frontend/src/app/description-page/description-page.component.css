@@ -1,0 +1,22 @@
+.fixed-size-image {
+  width: 80%;
+  height: auto;
+}
+
+.description-text {
+  width: 70%;
+}
+
+.link-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Adjust as needed to position below the triangle */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
