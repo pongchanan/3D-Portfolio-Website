@@ -1,3 +1,14 @@
-<div *ngFor="let project of projectsArray" id="project-list">
-  <app-project-card [project]="project"></app-project-card>
+<div *ngFor="let project of paginatedProjects" id="project-list">
+  <div class="card-container">
+    <app-project-card [project]="project"></app-project-card>
+  </div>
+</div>
+<div class="pagination-controls">
+  <button
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    (click)="setPage(i + 1)"
+    [class.active]="currentPage === i + 1"
+  >
+    {{ i + 1 }}
+  </button>
 </div>
