@@ -1,7 +1,13 @@
 <!-- <div routerLink="/">PROJECT</div>
 <div routerLink="/about">ABOUT ME</div> -->
-<app-toggle-link-button></app-toggle-link-button>
-<app-toggle-link-button></app-toggle-link-button>
+<app-toggle-link-button
+  [buttonText]="'PROJECT'"
+  [linkPath]="'/'"
+></app-toggle-link-button>
+<app-toggle-link-button
+  [buttonText]="'ABOUT ME'"
+  [linkPath]="'/about'"
+></app-toggle-link-button>
 <div>
   <a
     href="https://www.linkedin.com/in/pongchanan-sriwanna-147111282/"

@@ -5,6 +5,12 @@
     {{ projectDetail().description }}
   </p>
   <app-move-avatar></app-move-avatar>
-  <app-toggle-link-button></app-toggle-link-button>
-  <app-toggle-link-button></app-toggle-link-button>
+  <app-toggle-link-button
+    [buttonText]="'VIEW ON GITHUB'"
+    [linkPath]="projectDetail().github_url || ''"
+  ></app-toggle-link-button>
+  <app-toggle-link-button
+    [buttonText]="'VIEW ON WEBSITE'"
+    [linkPath]="projectDetail().website_url || ''"
+  ></app-toggle-link-button>
 </div>
