@@ -12,13 +12,13 @@
     {{ projectDetail().description }}
   </p>
   <div class="link-buttons">
-    <app-toggle-link-button
+    <app-website-link-button-white
       [buttonText]="'VIEW ON GITHUB'"
       [linkPath]="projectDetail().github_url || ''"
-    ></app-toggle-link-button>
-    <app-toggle-link-button
-      [buttonText]="'VIEW ON WEBSITE'"
+    ></app-website-link-button-white>
+    <app-website-link-button-black
+      [buttonText]="'VIEW IN WEBSITE'"
       [linkPath]="projectDetail().website_url || ''"
-    ></app-toggle-link-button>
+    ></app-website-link-button-black>
   </div>
 </div>

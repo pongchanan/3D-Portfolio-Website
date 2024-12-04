@@ -1,13 +1,18 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MoveAvatarComponent } from '../component/move-avatar/move-avatar.component';
-import { ToggleLinkButtonComponent } from '../component/toggle-link-button/toggle-link-button.component';
 import { FetchProjectDetailService } from '../service/fetch-project-detail.service';
 import { ProjectType } from '../model/project.type';
 import { ActivatedRoute } from '@angular/router';
+import { WebsiteLinkButtonBlackComponent } from '../component/website-link-button-black/website-link-button-black.component';
+import { WebsiteLinkButtonWhiteComponent } from '../component/website-link-button-white/website-link-button-white.component';
 
 @Component({
   selector: 'app-description-page',
-  imports: [MoveAvatarComponent, ToggleLinkButtonComponent],
+  imports: [
+    MoveAvatarComponent,
+    WebsiteLinkButtonBlackComponent,
+    WebsiteLinkButtonWhiteComponent,
+  ],
   templateUrl: './description-page.component.html',
   styleUrl: './description-page.component.css',
 })

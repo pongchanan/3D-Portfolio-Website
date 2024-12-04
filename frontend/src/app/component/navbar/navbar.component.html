@@ -1,21 +1,33 @@
 <nav>
-  <div id="main_nav" class="nav-links">
-    <app-toggle-link-button
-      [buttonText]="'PROJECT'"
+  <div class="nav-links">
+    <app-page-link-button-black
+      [buttonText]="'PROJECTS'"
       [linkPath]="'/'"
-    ></app-toggle-link-button>
-    <app-toggle-link-button
-      [buttonText]="'ABOUT ME'"
+    ></app-page-link-button-black>
+    <app-page-link-button-white
+      [buttonText]="'ABOUT'"
       [linkPath]="'/about'"
-    ></app-toggle-link-button>
+    ></app-page-link-button-white>
   </div>
   <div id="sub_nav" class="nav-links">
-    <a
+    <app-website-nav-button-white
+      [buttonText]="'LINKEDIN'"
+      [linkPath]="'https://www.linkedin.com/in/pongchanan-sriwanna-147111282/'"
+    ></app-website-nav-button-white>
+    <!-- <a
       href="https://www.linkedin.com/in/pongchanan-sriwanna-147111282/"
       target="_blank"
       >LINKEDIN</a
-    >
-    <a href="https://github.com/pongchanan" target="_blank">GITHUB</a>
-    <a href="mailto:pongchanansriwanna2547@gmail.com">EMAIL</a>
+    > -->
+    <app-website-nav-button-white
+      [buttonText]="'GITHUB'"
+      [linkPath]="'https://github.com/pongchanan'"
+    ></app-website-nav-button-white>
+    <!-- <a href="https://github.com/pongchanan" target="_blank">GITHUB</a> -->
+    <app-website-nav-button-white
+      [buttonText]="'EMAIL'"
+      [linkPath]="'mailto:pongchanansriwanna2547@gmail.com'"
+    ></app-website-nav-button-white>
+    <!-- <a href="mailto:pongchanansriwanna2547@gmail.com">EMAIL</a> -->
   </div>
 </nav>
