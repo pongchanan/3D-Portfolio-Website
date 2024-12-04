@@ -30,6 +30,8 @@ export class DescriptionPageComponent implements OnInit {
   projectDetail = signal<ProjectType>({} as ProjectType);
   isLoading = true;
   private cdr = inject(ChangeDetectorRef);
+  imageURL: string | null = null;
+  hasWebsiteURL: boolean = false;
 
   ngOnInit(): void {
     const projectId = this.route.snapshot.paramMap.get('id');
@@ -37,6 +39,8 @@ export class DescriptionPageComponent implements OnInit {
       this.fetchDetailService.fetchProjectDetail(projectId).subscribe({
         next: (data) => {
           this.projectDetail.set(data);
+          this.imageURL = this.getImageURL(data.image_bytes);
+          this.hasWebsiteURL = !!data.website_url;
           console.log('Project details fetched:', data); // Log fetched data
           this.cdr.detectChanges(); // Trigger change detection
         },
@@ -45,12 +49,6 @@ export class DescriptionPageComponent implements OnInit {
         },
       });
     }
-  }
-
-  hasWebsiteURL(): boolean {
-    const hasURL = !!this.projectDetail().website_url;
-    console.log('Has website URL:', hasURL); // Log the result of the check
-    return hasURL;
   }
 
   getImageURL(imageBytes: string): string {

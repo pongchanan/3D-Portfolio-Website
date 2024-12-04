@@ -1,12 +1,8 @@
 <div>
   <div class="image-container">
-    <img
-      [src]="getImageURL(projectDetail().image_bytes)"
-      alt="big"
-      class="fixed-size-image"
-    />
+    <img [src]="imageURL" alt="big" class="fixed-size-image" />
   </div>
-  <app-move-avatar></app-move-avatar>
+  <app-move-avatar> </app-move-avatar>
   <p id="topic">{{ projectDetail().title }}</p>
   <p class="description-text">
     {{ projectDetail().description }}
@@ -17,7 +13,7 @@
       [linkPath]="projectDetail().github_url || ''"
     ></app-website-link-button-white>
     <app-website-link-button-black
-      *ngIf="hasWebsiteURL()"
+      *ngIf="hasWebsiteURL"
       [buttonText]="'VIEW IN WEBSITE'"
       [linkPath]="projectDetail().website_url || ''"
     ></app-website-link-button-black>

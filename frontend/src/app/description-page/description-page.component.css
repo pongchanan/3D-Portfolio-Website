@@ -24,9 +24,11 @@
 
 .link-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 20px; /* Adjust as needed to position below the triangle */
+  margin: 20px 170px;
+  width: 57%;
 }
 
 .image-container {
