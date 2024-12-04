@@ -1,10 +1,17 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  signal,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { MoveAvatarComponent } from '../component/move-avatar/move-avatar.component';
 import { FetchProjectDetailService } from '../service/fetch-project-detail.service';
 import { ProjectType } from '../model/project.type';
 import { ActivatedRoute } from '@angular/router';
 import { WebsiteLinkButtonBlackComponent } from '../component/website-link-button-black/website-link-button-black.component';
 import { WebsiteLinkButtonWhiteComponent } from '../component/website-link-button-white/website-link-button-white.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-description-page',
@@ -12,6 +19,7 @@ import { WebsiteLinkButtonWhiteComponent } from '../component/website-link-butto
     MoveAvatarComponent,
     WebsiteLinkButtonBlackComponent,
     WebsiteLinkButtonWhiteComponent,
+    CommonModule,
   ],
   templateUrl: './description-page.component.html',
   styleUrl: './description-page.component.css',
@@ -21,6 +29,7 @@ export class DescriptionPageComponent implements OnInit {
   route = inject(ActivatedRoute);
   projectDetail = signal<ProjectType>({} as ProjectType);
   isLoading = true;
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     const projectId = this.route.snapshot.paramMap.get('id');
@@ -28,12 +37,20 @@ export class DescriptionPageComponent implements OnInit {
       this.fetchDetailService.fetchProjectDetail(projectId).subscribe({
         next: (data) => {
           this.projectDetail.set(data);
+          console.log('Project details fetched:', data); // Log fetched data
+          this.cdr.detectChanges(); // Trigger change detection
         },
         error: (err) => {
           console.error('Failed to fetch project details:', err);
         },
       });
     }
+  }
+
+  hasWebsiteURL(): boolean {
+    const hasURL = !!this.projectDetail().website_url;
+    console.log('Has website URL:', hasURL); // Log the result of the check
+    return hasURL;
   }
 
   getImageURL(imageBytes: string): string {

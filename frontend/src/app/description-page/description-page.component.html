@@ -17,6 +17,7 @@
       [linkPath]="projectDetail().github_url || ''"
     ></app-website-link-button-white>
     <app-website-link-button-black
+      *ngIf="hasWebsiteURL()"
       [buttonText]="'VIEW IN WEBSITE'"
       [linkPath]="projectDetail().website_url || ''"
     ></app-website-link-button-black>

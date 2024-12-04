@@ -1,10 +1,25 @@
 .fixed-size-image {
   width: 80%;
   height: auto;
+  margin-top: 20px; /* Adjust as needed */
+  margin-bottom: 20px; /* Adjust as needed */
 }
 
 .description-text {
-  width: 70%;
+  width: 55%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1100px;
+  margin: 20px 170px;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  text-align: left; /* Align text to the left for better readability */
+  font-size: 1.2em; /* Increase font size */
+}
+
+.description-text p {
+  margin-bottom: 15px; /* Add space between paragraphs */
 }
 
 .link-buttons {
@@ -19,4 +34,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+#topic {
+  font-size: 2em; /* Increase font size */
+  font-weight: bold; /* Make text bold */
+  margin: 20px 170px; /* Add margin for spacing */
 }
