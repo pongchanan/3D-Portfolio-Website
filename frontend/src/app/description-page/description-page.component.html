@@ -1,12 +1,10 @@
-<img src="place_holder" alt="big" />
-<p id="topic">Web-First-Metaverse</p>
-<pre>
-    Sougen is a cutting-edge Web-First Metaverse platform that aims to revolutionize the way people experience virtual environments. Designed with accessibility in mind, Sougen is a metaverse that can be easily accessed from any device using a web browser, eliminating the need for complex installations or specialized hardware. Its vision is to offer a barrier-free experience, making it open and available to millions of users worldwide.
-
-The platform leverages modern web technologies to ensure smooth, immersive experiences that are both highly interactive and engaging. Users can explore virtual worlds, interact with digital avatars, and participate in various activities directly from their browsers in just one click. Sougen’s focus is on inclusivity, offering a seamless experience for a wide range of devices, from smartphones to desktops, without compromising the quality or depth of the virtual environment.
-
-Whether you are an individual seeking to explore immersive spaces, creators looking to build in the metaverse, or businesses aiming to engage with a global community, Sougen provides a versatile and scalable platform that makes the metaverse accessible to all.
-</pre>
-<app-move-avatar></app-move-avatar>
-<app-toggle-link-button></app-toggle-link-button>
-<app-toggle-link-button></app-toggle-link-button>
+<div>
+  <img [src]="getImageURL(projectDetail().image_bytes)" alt="big" />
+  <p id="topic">{{ projectDetail().title }}</p>
+  <p>
+    {{ projectDetail().description }}
+  </p>
+  <app-move-avatar></app-move-avatar>
+  <app-toggle-link-button></app-toggle-link-button>
+  <app-toggle-link-button></app-toggle-link-button>
+</div>

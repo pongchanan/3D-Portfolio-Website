@@ -1,2 +1,3 @@
-<p>project-list works!</p>
-<app-project-card></app-project-card>
+<div *ngFor="let project of projectsArray">
+  <app-project-card [project]="project"></app-project-card>
+</div>
