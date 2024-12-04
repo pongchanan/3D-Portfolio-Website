@@ -37,6 +37,7 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit {
 
     this.renderer = new THREE.WebGLRenderer({ canvas });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setClearColor(0xffffff); // Set background color to white
 
     this.scene = new THREE.Scene();
 
@@ -47,6 +48,7 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit {
       1000
     );
     this.camera.position.z = 5;
+    this.camera.position.x = -5;
 
     const geometry = new THREE.BufferGeometry();
     const vertices = new Float32Array([

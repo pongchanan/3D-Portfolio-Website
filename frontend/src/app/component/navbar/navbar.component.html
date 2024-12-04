@@ -1,21 +1,21 @@
-<app-toggle-link-button
-  [buttonText]="'PROJECT'"
-  [linkPath]="'/'"
-></app-toggle-link-button>
-<app-toggle-link-button
-  [buttonText]="'ABOUT ME'"
-  [linkPath]="'/about'"
-></app-toggle-link-button>
-<div>
-  <a
-    href="https://www.linkedin.com/in/pongchanan-sriwanna-147111282/"
-    target="_blank"
-    >LINKEDIN</a
-  >
-</div>
-<div>
-  <a href="https://github.com/pongchanan" target="_blank">GITHUB</a>
-</div>
-<div>
-  <a href="mailto:pongchanansriwanna2547@gmail.com">EMAIL</a>
-</div>
+<nav>
+  <div id="main_nav" class="nav-links">
+    <app-toggle-link-button
+      [buttonText]="'PROJECT'"
+      [linkPath]="'/'"
+    ></app-toggle-link-button>
+    <app-toggle-link-button
+      [buttonText]="'ABOUT ME'"
+      [linkPath]="'/about'"
+    ></app-toggle-link-button>
+  </div>
+  <div id="sub_nav" class="nav-links">
+    <a
+      href="https://www.linkedin.com/in/pongchanan-sriwanna-147111282/"
+      target="_blank"
+      >LINKEDIN</a
+    >
+    <a href="https://github.com/pongchanan" target="_blank">GITHUB</a>
+    <a href="mailto:pongchanansriwanna2547@gmail.com">EMAIL</a>
+  </div>
+</nav>
