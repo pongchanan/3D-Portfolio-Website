@@ -25,10 +25,11 @@
 .link-buttons {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; /* Align buttons to the start */
   align-items: center;
   margin: 20px 170px;
-  width: 57%;
+  width: 55%; /* Match the width of .description-text */
+  padding: 20px;
 }
 
 .image-container {
@@ -42,4 +43,20 @@
   font-size: 2em; /* Increase font size */
   font-weight: bold; /* Make text bold */
   margin: 20px 170px; /* Add margin for spacing */
+  width: 55%; /* Match the width of .description-text */
+}
+
+@media (max-width: 768px) {
+  .description-text {
+    width: 80%; /* Match the width of .fixed-size-image */
+    margin: 20px auto; /* Center the text */
+  }
+  .link-buttons {
+    width: 80%; /* Match the width of .description-text in mobile view */
+    margin: 20px auto; /* Center the buttons */
+  }
+  #topic {
+    width: 80%; /* Match the width of .description-text in mobile view */
+    margin: 20px auto; /* Center the title */
+  }
 }

@@ -2,26 +2,28 @@
   <div class="image-container">
     <img [src]="imageURL" alt="big" class="fixed-size-image" />
   </div>
-  <app-move-avatar> </app-move-avatar>
-  <p id="topic">{{ projectDetail().title }}</p>
-  <p class="description-text">
-    {{ projectDetail().description }}
-  </p>
-  <div class="link-buttons">
-    <app-link-button
-      [buttonText]="'VIEW ON GITHUB'"
-      [linkPath]="projectDetail().github_url || ''"
-      [isExternal]="true"
-      buttonStyle="white"
-      [borderless]="false"
-    ></app-link-button>
-    <app-link-button
-      *ngIf="hasWebsiteURL"
-      [buttonText]="'VIEW IN WEBSITE'"
-      [linkPath]="projectDetail().website_url || ''"
-      [isExternal]="true"
-      buttonStyle="black"
-      [borderless]="true"
-    ></app-link-button>
+  <app-move-avatar *ngIf="!isMobileView"> </app-move-avatar>
+  <div class="content-container">
+    <p id="topic">{{ projectDetail().title }}</p>
+    <p class="description-text">
+      {{ projectDetail().description }}
+    </p>
+    <div class="link-buttons">
+      <app-link-button
+        [buttonText]="'VIEW ON GITHUB'"
+        [linkPath]="projectDetail().github_url || ''"
+        [isExternal]="true"
+        buttonStyle="white"
+        [borderless]="false"
+      ></app-link-button>
+      <app-link-button
+        *ngIf="hasWebsiteURL"
+        [buttonText]="'VIEW IN WEBSITE'"
+        [linkPath]="projectDetail().website_url || ''"
+        [isExternal]="true"
+        buttonStyle="black"
+        [borderless]="true"
+      ></app-link-button>
+    </div>
   </div>
 </div>

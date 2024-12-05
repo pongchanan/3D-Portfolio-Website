@@ -26,6 +26,7 @@ export class DescriptionPageComponent implements OnInit {
   private cdr = inject(ChangeDetectorRef);
   imageURL: string | null = null;
   hasWebsiteURL: boolean = false;
+  isMobileView = window.innerWidth < 769; // Check if the screen width is less than 769px
 
   ngOnInit(): void {
     const projectId = this.route.snapshot.paramMap.get('id');
