@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 import { ProjectCardComponent } from '../project-card/project-card.component';
 import { MinProjectType } from '../../model/minProject.type';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,16 @@ import { CommonModule } from '@angular/common';
 export class ProjectListComponent {
   @Input() projectsArray!: Array<MinProjectType>;
   currentPage: number = 1;
-  projectsPerPage: number = 3;
+  projectsPerPage: number = this.getProjectsPerPage();
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.projectsPerPage = this.getProjectsPerPage();
+  }
+
+  getProjectsPerPage(): number {
+    return window.innerWidth < 769 ? 5 : 3;
+  }
 
   get paginatedProjects() {
     const startIndex = (this.currentPage - 1) * this.projectsPerPage;
