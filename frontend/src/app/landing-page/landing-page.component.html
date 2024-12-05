@@ -1,4 +1,6 @@
 <div id="landing">
-  <app-move-avatar></app-move-avatar>
+  <ng-container *ngIf="isWideScreen()">
+    <app-move-avatar></app-move-avatar>
+  </ng-container>
   <app-project-list [projectsArray]="projectThumbnail()"></app-project-list>
 </div>
