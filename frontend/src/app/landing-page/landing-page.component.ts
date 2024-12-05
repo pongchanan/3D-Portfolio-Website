@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, Renderer2 } from '@angular/core';
 import { MoveAvatarComponent } from '../component/move-avatar/move-avatar.component';
 import { ProjectListComponent } from '../component/project-list/project-list.component';
 import { FetchProjectThumbnailService } from '../service/fetch-project-thumbnail.service';
@@ -16,10 +16,17 @@ export class LandingPageComponent implements OnInit {
   projectThumbnail = signal<Array<MinProjectType>>([]);
   isWideScreen = signal<boolean>(true);
 
+  constructor(private renderer: Renderer2) {}
+
   ngOnInit(): void {
     this.checkScreenWidth();
+    this.updateProjectListWidth();
     this.fetchThumbnailService.fetchProjectThumbnail().subscribe((data) => {
       this.projectThumbnail.set(data);
+    });
+    window.addEventListener('resize', () => {
+      this.checkScreenWidth();
+      this.updateProjectListWidth();
     });
   }
 
@@ -28,5 +35,18 @@ export class LandingPageComponent implements OnInit {
     window.addEventListener('resize', () => {
       this.isWideScreen.set(window.innerWidth >= 769);
     });
+  }
+
+  updateProjectListWidth(): void {
+    const projectListElement = document.querySelector('app-project-list');
+    if (projectListElement) {
+      if (this.isWideScreen()) {
+        this.renderer.setStyle(projectListElement, 'width', '80%');
+        this.renderer.setStyle(projectListElement, 'margin', '0');
+      } else {
+        this.renderer.setStyle(projectListElement, 'width', '100%');
+        this.renderer.setStyle(projectListElement, 'margin', '0 auto');
+      }
+    }
   }
 }
