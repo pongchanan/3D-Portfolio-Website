@@ -55,13 +55,14 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.scene = new THREE.Scene();
 
+    const aspectRatio = window.innerWidth / window.innerHeight;
     this.camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
+      75, // FOV
+      aspectRatio,
       0.1,
       1000
     );
-    this.camera.position.z = 5;
+    this.camera.position.z = 5; // Adjust based on your scene's scale
     this.camera.position.x = -5;
 
     const geometry = new THREE.BufferGeometry();
@@ -76,7 +77,6 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit, OnDestroy {
     // Create eyes
     const eyeGeometry = new THREE.CircleGeometry(0.1, 32);
     const eyeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
-
     this.leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
     this.leftEye.position.set(-0.5, 0.5, 0.1);
     this.scene.add(this.leftEye);
@@ -101,9 +101,6 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private animate(): void {
     requestAnimationFrame(this.animate.bind(this));
-
-    // this.triangle.rotation.x += 0.01;
-    // this.triangle.rotation.y += 0.01;
 
     this.triangle.position.x = (this.mouseX / window.innerWidth) * 2 - 1;
     this.triangle.position.y = -(this.mouseY / window.innerHeight) * 2 + 1;
@@ -176,5 +173,14 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.mouseY = event.clientY;
     this.lastMouseMoveTime = Date.now();
     this.changeDetectorRef.detectChanges(); // Manually trigger change detection
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(): void {
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+    this.camera.position.z = 5;
   }
 }
