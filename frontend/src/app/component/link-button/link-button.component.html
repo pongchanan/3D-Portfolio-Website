@@ -1,0 +1,14 @@
+<button
+  *ngIf="isExternal; else internalLink"
+  [ngClass]="[buttonStyle, borderless ? 'borderless' : '']"
+>
+  <a [href]="linkPath" target="_blank">{{ buttonText }}</a>
+</button>
+<ng-template #internalLink>
+  <button
+    [routerLink]="linkPath"
+    [ngClass]="[buttonStyle, borderless ? 'borderless' : '']"
+  >
+    {{ buttonText }}
+  </button>
+</ng-template>

@@ -1,33 +1,41 @@
 <nav>
   <div class="nav-links">
-    <app-page-link-button-black
+    <app-link-button
       [buttonText]="'PROJECTS'"
       [linkPath]="'/'"
-    ></app-page-link-button-black>
-    <app-page-link-button-white
+      [isExternal]="false"
+      buttonStyle="black"
+      [borderless]="false"
+    ></app-link-button>
+    <app-link-button
       [buttonText]="'ABOUT'"
       [linkPath]="'/about'"
-    ></app-page-link-button-white>
+      [isExternal]="false"
+      buttonStyle="white"
+      [borderless]="true"
+    ></app-link-button>
   </div>
   <div id="sub_nav" class="nav-links">
-    <app-website-nav-button-white
+    <app-link-button
       [buttonText]="'LINKEDIN'"
       [linkPath]="'https://www.linkedin.com/in/pongchanan-sriwanna-147111282/'"
-    ></app-website-nav-button-white>
-    <!-- <a
-      href="https://www.linkedin.com/in/pongchanan-sriwanna-147111282/"
-      target="_blank"
-      >LINKEDIN</a
-    > -->
-    <app-website-nav-button-white
+      [isExternal]="true"
+      buttonStyle="white"
+      [borderless]="true"
+    ></app-link-button>
+    <app-link-button
       [buttonText]="'GITHUB'"
       [linkPath]="'https://github.com/pongchanan'"
-    ></app-website-nav-button-white>
-    <!-- <a href="https://github.com/pongchanan" target="_blank">GITHUB</a> -->
-    <app-website-nav-button-white
+      [isExternal]="true"
+      buttonStyle="white"
+      [borderless]="true"
+    ></app-link-button>
+    <app-link-button
       [buttonText]="'EMAIL'"
       [linkPath]="'mailto:pongchanansriwanna2547@gmail.com'"
-    ></app-website-nav-button-white>
-    <!-- <a href="mailto:pongchanansriwanna2547@gmail.com">EMAIL</a> -->
+      [isExternal]="true"
+      buttonStyle="white"
+      [borderless]="true"
+    ></app-link-button>
   </div>
 </nav>
