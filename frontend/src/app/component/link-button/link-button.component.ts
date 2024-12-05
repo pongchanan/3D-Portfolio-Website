@@ -14,4 +14,5 @@ export class LinkButtonComponent {
   @Input() isExternal: boolean = false;
   @Input() buttonStyle: 'black' | 'white' = 'white';
   @Input() borderless: boolean = false;
+  @Input() fullWidth: boolean = false;
 }
