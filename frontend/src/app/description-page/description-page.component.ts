@@ -27,6 +27,7 @@ export class DescriptionPageComponent implements OnInit {
   imageURL: string | null = null;
   hasWebsiteURL: boolean = false;
   isMobileView = window.innerWidth < 769; // Check if the screen width is less than 769px
+  paragraphs: string[] = [];
 
   ngOnInit(): void {
     const projectId = this.route.snapshot.paramMap.get('id');
@@ -36,6 +37,7 @@ export class DescriptionPageComponent implements OnInit {
           this.projectDetail.set(data);
           this.imageURL = this.getImageURL(data.image_bytes);
           this.hasWebsiteURL = !!data.website_url;
+          this.paragraphs = data.description.split('\n'); // Split description into paragraphs
           console.log('Project details fetched:', data); // Log fetched data
           this.cdr.detectChanges(); // Trigger change detection
         },

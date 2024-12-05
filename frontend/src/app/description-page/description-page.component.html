@@ -5,9 +5,11 @@
   <app-move-avatar *ngIf="!isMobileView"> </app-move-avatar>
   <div class="content-container">
     <p id="topic">{{ projectDetail().title }}</p>
-    <p class="description-text">
-      {{ projectDetail().description }}
-    </p>
+    <div class="description-text">
+      <p *ngFor="let paragraph of paragraphs">
+        {{ paragraph }}
+      </p>
+    </div>
     <div class="link-buttons">
       <app-link-button
         [buttonText]="'VIEW ON GITHUB'"
