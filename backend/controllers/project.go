@@ -83,33 +83,38 @@ func UpdateProject(c *gin.Context) {
 	}
 
 	// Parse form data
-	project.Title = c.PostForm("title")
-	project.Description = c.PostForm("description")
-	project.GithubURL = c.PostForm("github_url")
-	project.WebsiteURL = c.PostForm("website_url")
+	if title := c.PostForm("title"); title != "" {
+		project.Title = title
+	}
+	if description := c.PostForm("description"); description != "" {
+		project.Description = description
+	}
+	if githubURL := c.PostForm("github_url"); githubURL != "" {
+		project.GithubURL = githubURL
+	}
+	if websiteURL := c.PostForm("website_url"); websiteURL != "" {
+		project.WebsiteURL = websiteURL
+	}
 
 	// Handle file upload
 	file, err := c.FormFile("image")
-	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Image file is required"})
-		return
-	}
-	
-	// Read file content
-	fileContent, err := file.Open()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to read image file"})
-		return
-	}
-	defer fileContent.Close()
+	if err == nil {
+		// Read file content
+		fileContent, err := file.Open()
+		if err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to read image file"})
+			return
+		}
+		defer fileContent.Close()
 
-	buf := bytes.NewBuffer(nil)
-	if _, err := buf.ReadFrom(fileContent); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
+		buf := bytes.NewBuffer(nil)
+		if _, err := buf.ReadFrom(fileContent); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
 
-	project.ImageBytes = buf.Bytes()
+		project.ImageBytes = buf.Bytes()
+	}
 
 	// Save project to database
 	if err := database.DB.Save(&project).Error; err != nil {
@@ -118,7 +123,6 @@ func UpdateProject(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, project)
-
 }
 
 func DeleteProject(c *gin.Context) {
