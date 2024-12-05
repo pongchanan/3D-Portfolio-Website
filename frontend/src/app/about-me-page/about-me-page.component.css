@@ -3,8 +3,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 20px;
+  margin: 20px auto;
   text-align: center;
+  width: 80%; /* Set width to 80% */
 }
 
 #container h1,
@@ -14,10 +15,16 @@
 
 .profile-image {
   border-radius: 50%;
-  width: 400px; /* Increased from 150px to 200px */
-  height: 400px; /* Increased from 150px to 200px */
+  width: 100%; /* Make image width responsive */
+  max-width: 400px; /* Set maximum width */
+  height: auto; /* Maintain aspect ratio */
   object-fit: cover;
   margin: 20px 0;
+}
+
+.interest_message_container {
+  width: 80%; /* Make the container narrower */
+  margin: 0 auto; /* Center the container */
 }
 
 #description {
@@ -29,7 +36,8 @@
   font-family: "Arial", sans-serif;
   line-height: 1.6;
   text-align: left; /* Align text to the left for better readability */
-  font-size: 1.2em; /* Increase font size */
+  font-size: 1.2rem; /* Use rem units for font size */
+  width: 80%; /* Set width to 80% */
 }
 
 #description p {
@@ -37,11 +45,11 @@
 }
 
 #greeting_message {
-  font-size: 4em; /* Increase font size */
+  font-size: 4rem; /* Use rem units for font size */
   font-weight: bold; /* Make text bold */
 }
 
 #introduce_message,
 .interest_message {
-  font-size: 2em; /* Increase font size */
+  font-size: 2rem; /* Use rem units for font size */
 }
