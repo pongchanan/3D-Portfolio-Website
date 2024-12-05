@@ -1,5 +1,6 @@
 <nav>
-  <div class="nav-links">
+  <button (click)="toggleNavbar()" class="navbar-toggler">☰</button>
+  <div class="nav-links" [class.collapsed]="isCollapsed">
     <app-link-button
       [buttonText]="'PROJECTS'"
       [linkPath]="'/'"
@@ -15,7 +16,7 @@
       [borderless]="true"
     ></app-link-button>
   </div>
-  <div id="sub_nav" class="nav-links">
+  <div id="sub_nav" class="nav-links" [class.collapsed]="isCollapsed">
     <app-link-button
       [buttonText]="'LINKEDIN'"
       [linkPath]="'https://www.linkedin.com/in/pongchanan-sriwanna-147111282/'"

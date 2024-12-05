@@ -11,4 +11,10 @@ import { LinkButtonComponent } from '../link-button/link-button.component';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  isCollapsed = true;
+
+  toggleNavbar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
+}

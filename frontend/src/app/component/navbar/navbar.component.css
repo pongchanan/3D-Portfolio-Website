@@ -5,9 +5,21 @@ nav {
   padding: 0.75rem 1rem;
 }
 
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .nav-links {
   display: flex;
   gap: 1rem;
+}
+
+.nav-links.collapsed {
+  display: none;
 }
 
 .nav-links a {
@@ -26,9 +38,23 @@ nav {
     padding: 1rem;
   }
 
+  .navbar-toggler {
+    display: block;
+  }
+
   .nav-links {
     flex-direction: column;
     gap: 0.75rem;
     margin-top: 0.75rem;
+  }
+
+  .nav-links.collapsed {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-links.collapsed {
+    display: flex;
   }
 }
