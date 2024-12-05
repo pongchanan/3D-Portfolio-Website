@@ -8,14 +8,20 @@
     {{ projectDetail().description }}
   </p>
   <div class="link-buttons">
-    <app-website-link-button-white
+    <app-link-button
       [buttonText]="'VIEW ON GITHUB'"
       [linkPath]="projectDetail().github_url || ''"
-    ></app-website-link-button-white>
-    <app-website-link-button-black
+      [isExternal]="true"
+      buttonStyle="white"
+      [borderless]="false"
+    ></app-link-button>
+    <app-link-button
       *ngIf="hasWebsiteURL"
       [buttonText]="'VIEW IN WEBSITE'"
       [linkPath]="projectDetail().website_url || ''"
-    ></app-website-link-button-black>
+      [isExternal]="true"
+      buttonStyle="black"
+      [borderless]="true"
+    ></app-link-button>
   </div>
 </div>

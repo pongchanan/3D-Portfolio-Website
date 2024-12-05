@@ -9,18 +9,12 @@ import { MoveAvatarComponent } from '../component/move-avatar/move-avatar.compon
 import { FetchProjectDetailService } from '../service/fetch-project-detail.service';
 import { ProjectType } from '../model/project.type';
 import { ActivatedRoute } from '@angular/router';
-import { WebsiteLinkButtonBlackComponent } from '../component/website-link-button-black/website-link-button-black.component';
-import { WebsiteLinkButtonWhiteComponent } from '../component/website-link-button-white/website-link-button-white.component';
+import { LinkButtonComponent } from '../component/link-button/link-button.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-description-page',
-  imports: [
-    MoveAvatarComponent,
-    WebsiteLinkButtonBlackComponent,
-    WebsiteLinkButtonWhiteComponent,
-    CommonModule,
-  ],
+  imports: [MoveAvatarComponent, LinkButtonComponent, CommonModule],
   templateUrl: './description-page.component.html',
   styleUrl: './description-page.component.css',
 })
