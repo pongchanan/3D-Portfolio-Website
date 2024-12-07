@@ -7,8 +7,11 @@ import {
   HostListener,
   ChangeDetectorRef,
   OnDestroy,
+  Inject,
+  PLATFORM_ID,
 } from '@angular/core';
 import * as THREE from 'three';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-move-avatar',
@@ -34,16 +37,25 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit, OnDestroy {
   private lastMouseMoveTime!: number;
   private shakeInterval!: number;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.initThreeJS();
+    }
+  }
 
   ngAfterViewInit(): void {
-    this.initThreeJS();
-    this.animate();
-    this.startBlinking();
-    this.startSmiling();
-    this.startShaking();
+    if (isPlatformBrowser(this.platformId)) {
+      this.initThreeJS();
+      this.animate();
+      this.startBlinking();
+      this.startSmiling();
+      this.startShaking();
+    }
   }
 
   private initThreeJS(): void {
@@ -177,10 +189,11 @@ export class MoveAvatarComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize(): void {
-    this.camera.aspect = window.innerWidth / window.innerHeight;
-    this.camera.updateProjectionMatrix();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-
-    this.camera.position.z = 5;
+    if (isPlatformBrowser(this.platformId)) {
+      this.camera.aspect = window.innerWidth / window.innerHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
+      this.camera.position.z = 5;
+    }
   }
 }

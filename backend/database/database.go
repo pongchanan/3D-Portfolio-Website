@@ -21,6 +21,9 @@ func Init() {
         log.Fatalf("failed to connect to database: %v", err)
     }
 
+    // Add UUID extension
+    DB.Exec("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")
+
     // Auto-migrate the models
     DB.AutoMigrate(&models.Project{})
 }

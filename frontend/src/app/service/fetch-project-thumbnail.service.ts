@@ -9,8 +9,9 @@ export class FetchProjectThumbnailService {
   http = inject(HttpClient);
 
   fetchProjectThumbnail() {
+    const backendUrl = process.env['REACT_APP_BACKEND_URL'];
     return this.http.get<Array<MinProjectType>>(
-      `http://localhost:8080/project/thumbnail`
+      `${backendUrl}/project/thumbnail`
     );
   }
 
