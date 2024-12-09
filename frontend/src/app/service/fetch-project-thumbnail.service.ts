@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { MinProjectType } from '../model/minProject.type';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class FetchProjectThumbnailService {
   http = inject(HttpClient);
 
   fetchProjectThumbnail() {
-    const backendUrl = process.env['REACT_APP_BACKEND_URL'];
+    const backendUrl = environment.backendUrl;
     return this.http.get<Array<MinProjectType>>(
       `${backendUrl}/project/thumbnail`
     );

@@ -7,8 +7,6 @@ services:
             dockerfile: Dockerfile.frontend
         ports:
             - '4200:4200'
-        environment:
-            REACT_APP_BACKEND_URL: https://portfolio-api.oplor.me
         depends_on:
             - backend
 
@@ -26,6 +24,8 @@ services:
             DB_NAME: Portfolio
         depends_on:
             - db
+        command:
+            ['dockerize', '-wait', 'tcp://db:5432', '-timeout', '30s', './main']
 
     db:
         image: postgres:13
