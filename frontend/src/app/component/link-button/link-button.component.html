@@ -1,0 +1,22 @@
+<button
+  *ngIf="isExternal; else internalLink"
+  [ngClass]="[
+    buttonStyle,
+    borderless ? 'borderless' : '',
+    fullWidth ? 'fullWidth' : ''
+  ]"
+>
+  <a [href]="linkPath" target="_blank">{{ buttonText }}</a>
+</button>
+<ng-template #internalLink>
+  <button
+    [routerLink]="linkPath"
+    [ngClass]="[
+      buttonStyle,
+      borderless ? 'borderless' : '',
+      fullWidth ? 'fullWidth' : ''
+    ]"
+  >
+    {{ buttonText }}
+  </button>
+</ng-template>

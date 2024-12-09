@@ -1,0 +1,13 @@
+FROM golang:1.23
+
+WORKDIR /app
+
+# Install dockerize
+ADD https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz /tmp/
+RUN tar -C /usr/local/bin -xzvf /tmp/dockerize-linux-amd64-v0.6.1.tar.gz
+
+COPY . .
+
+RUN go build -o main main.go
+
+CMD ["./main"]

@@ -1,0 +1,5 @@
+canvas {
+  display: block;
+  z-index: -1; /* Changed from 0 to -1 */
+  position: absolute;
+}

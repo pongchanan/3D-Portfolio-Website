@@ -1,0 +1,11 @@
+#landing {
+  position: relative;
+  display: flex;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  #landing {
+    justify-content: center;
+  }
+}

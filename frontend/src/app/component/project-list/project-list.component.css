@@ -1,0 +1,79 @@
+#project-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#project-list {
+  z-index: 1;
+  position: relative;
+  width: 80%;
+}
+
+@media (max-width: 768px) {
+  #project-list {
+    margin: 0 auto;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 769px) {
+  #project-list {
+    font-size: 16px;
+  }
+}
+
+.card-container {
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .card-container {
+    width: 80%;
+    margin: 10px auto;
+  }
+}
+
+.card-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.pagination-controls button {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  transition: color 0.2s, background-color 0.2s;
+  margin: 0 5px;
+}
+
+.pagination-controls button.active {
+  color: black;
+  background-color: #bbb;
+}
+
+.pagination-controls button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(.active) {
+  color: #0056b3;
+  background-color: rgba(0, 123, 255, 0.1);
+}
